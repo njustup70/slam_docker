@@ -5,8 +5,8 @@ ARG USERNAME=Elaina
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 #安装必要软件
-RUN apt-get update 
-RUN apt-get install -y  net-tools nautilus bash-completion clangd  
+RUN apt-get update && \
+    apt-get install -y  net-tools nautilus bash-completion clangd  gedit ros-humble-rtabmap-ros
 # 创建用户组和用户
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
