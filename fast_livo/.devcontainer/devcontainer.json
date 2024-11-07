@@ -1,0 +1,21 @@
+{
+    "name": "nav",
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "rtabmap_container",
+    "workspaceFolder": "/home/Elaina/nav",
+    "shutdownAction": "stopCompose",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "llvm-vs-code-extensions.vscode-clangd",
+                "twxs.cmake",
+                "josetr.cmake-language-support-vscode",
+                "ms-vscode.cmake-tools",
+                "cschlosser.doxdocgen"
+            ]
+        },
+        "jetbrains": {
+            "extensions": []
+        }
+    }
+}

@@ -5,13 +5,17 @@ from launch.substitutions import LaunchConfiguration
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_directory
 def generate_launch_description():
+    my_package_prefix = get_package_share_directory('my_realsense')
     launchDescription = LaunchDescription()
     realsense_pkg_prefix = get_package_share_directory('realsense2_camera')
-    align_depth=LaunchConfiguration('align_depth.enable', default='true')
     root_path=LaunchConfiguration('camera_namespace',default='/')
+    yaml_path=LaunchConfiguration('config_file',default=my_package_prefix+'/config/realsense.yaml')
+
     realsense_bringup=IncludeLaunchDescription(
         PythonLaunchDescriptionSource([realsense_pkg_prefix + '/launch/rs_launch.py']),
-        launch_arguments={'align_depth.enable':align_depth,'camera_namespace':root_path}.items()
+        launch_arguments={'camera_namespace':root_path
+        ,'config_file':yaml_path
+                          }.items()
     )
     launchDescription.add_action(realsense_bringup)
     return launchDescription
