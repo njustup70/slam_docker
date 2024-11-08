@@ -1,0 +1,7 @@
+#它最后的节点是在/imu_filter_madgwick下
+/imu_filter_madgwick:
+  ros__parameters:
+    use_mag: false    #不使用磁力计
+    world_frame: enu  #ENU坐标系
+    publish_tf: false #不发布tf
+    
