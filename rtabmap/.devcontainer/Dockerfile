@@ -30,7 +30,7 @@ RUN sudo -u $USERNAME mkdir ./packages  && cd ./packages && git clone https://gi
 # 删除 sudo 权限
 USER root
 RUN  echo 'export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH' >> /home/${USERNAME}/.bashrc \
-    && ./build.sh humble ; echo 'source ~/nav/packages/ws_livox/install/setup.bash' >> /home/${USERNAME}/.bashrc
+    && ./build.sh humble ; echo 'source ~/packages/ws_livox/install/setup.bash' >> /home/${USERNAME}/.bashrc
 USER $USERNAME
 CMD ["/bin/bash"]
 
