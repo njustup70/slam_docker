@@ -1,0 +1,31 @@
+{
+    "name": "nav",
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "rtabmap_container",
+    "workspaceFolder": "/home/Elaina/slam",
+    "shutdownAction": "stopCompose",
+    "features": {
+        "ghcr.io/devcontainers/features/github-cli:1": {
+            "version": "latest"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "llvm-vs-code-extensions.vscode-clangd",
+                "twxs.cmake",
+                "josetr.cmake-language-support-vscode",
+                "ms-vscode.cmake-tools",
+                "cschlosser.doxdocgen",
+                "ms-python.python",
+                "ms-python.debugpy",
+                "mhutchie.git-graph",
+                "donjayamanne.githistory",
+                "eamodio.gitlens"
+            ]
+        },
+        "jetbrains": {
+            "extensions": []
+        }
+    }
+}
