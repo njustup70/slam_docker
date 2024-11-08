@@ -4,6 +4,11 @@
     "service": "rtabmap_container",
     "workspaceFolder": "/home/Elaina/slam",
     "shutdownAction": "stopCompose",
+    "features": {
+        "ghcr.io/devcontainers/features/github-cli:1": {
+            "version": "latest"
+        }
+    },
     "customizations": {
         "vscode": {
             "extensions": [
@@ -13,7 +18,10 @@
                 "ms-vscode.cmake-tools",
                 "cschlosser.doxdocgen",
                 "ms-python.python",
-                "ms-python.debugpy"
+                "ms-python.debugpy",
+                "mhutchie.git-graph",
+                "donjayamanne.githistory",
+                "eamodio.gitlens"
             ]
         },
         "jetbrains": {
