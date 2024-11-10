@@ -1,5 +1,5 @@
-#FROM introlab3it/rtabmap:jammy
-FROM introlab3it/rtabmap_ros:humble-latest
+FROM introlab3it/rtabmap:jammy
+# FROM introlab3it/rtabmap_ros:humble-latest
 # 定义用户和用户组
 ARG USERNAME=Elaina
 ARG USER_UID=1000
