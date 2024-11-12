@@ -29,12 +29,12 @@ COPY --chown=${USERNAME}:${USERNAME} ./packages/Sophus /home/${USERNAME}/package
 RUN cd packages/Sophus && mkdir build && cd build && cmake .. && make && sudo make install
 #安装雷达驱动
 RUN cd packages && git clone https://github.com/Livox-SDK/Livox-SDK.git && cd Livox-SDK/build \
-&& cmake .. && make -j8 && sudo make install \
+&& cmake .. && make -j8 && sudo make install 
 
 
 RUN  echo 'export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH' >> /home/${USERNAME}/.bashrc \
 && echo 'source ~/slam/fast_livo/packages/ws_livox/devel/setup.bash'  >> /home/${USERNAME}/.bashrc \
-&& echo 'source ~/slam/fast_livo/packages/catkin_ws/devel/setup.bash'  >> /home/${USERNAME}/.bashrc \
+&& echo 'source ~/slam/fast_livo/packages/catkin_ws/devel/setup.bash'  >> /home/${USERNAME}/.bashrc 
 USER $USERNAME
 CMD ["/bin/bash"]
 
