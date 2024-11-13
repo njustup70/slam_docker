@@ -2,7 +2,7 @@
     "name": "nav",
     "dockerComposeFile": "./docker-compose.yml",
     "service": "rtabmap_container",
-    "workspaceFolder": "/home/Elaina/slam",
+    "workspaceFolder": "/home/Elaina/slam/rtabmap",
     "shutdownAction": "stopCompose",
     "features": {
         "ghcr.io/devcontainers/features/github-cli:1": {
