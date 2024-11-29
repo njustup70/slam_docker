@@ -1,8 +1,9 @@
 version: '3'
 services:
-  rtabmap_container:
+  rastlivo_container:
     build:
-      context: .
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
     image: elaina/fastlivo-container
     container_name: fastlivo_container
     environment:
@@ -14,7 +15,7 @@ services:
     volumes:
       - ${XAUTHORITY}:/root/.Xauthority
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ./..:/home/Elaina/nav
+      - ./../..:/home/Elaina/slam
       - /dev:/dev
     network_mode: host
     pid: "host" # 添加 pid 命名空间共享
@@ -24,4 +25,4 @@ services:
     tty: true
     user: "Elaina"
     runtime: nvidia
-    working_dir: "/home/Elaina" # 指定默认工作目录
+    working_dir: "/home/Elaina/slam/fast_livo" # 指定默认工作目录

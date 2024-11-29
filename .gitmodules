@@ -1,0 +1,6 @@
+[submodule "fast_livo/packages/catkin_ws/src"]
+	path = fast_livo/packages/catkin_ws/src/FAST-LIVO
+	url = https://github.com/hku-mars/FAST-LIVO.git
+[submodule "fast_lio2/packages/catkin_ws/src"]
+	path = fast_lio2/packages/catkin_ws/src
+	url = https://github.com/hku-mars/FAST_LIO.git

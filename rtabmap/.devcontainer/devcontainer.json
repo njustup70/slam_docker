@@ -2,12 +2,15 @@
     "name": "nav",
     "dockerComposeFile": "./docker-compose.yml",
     "service": "rtabmap_container",
-    "workspaceFolder": "/home/Elaina/slam",
+    "workspaceFolder": "/home/Elaina/slam/rtabmap",
     "shutdownAction": "stopCompose",
     "features": {
         "ghcr.io/devcontainers/features/github-cli:1": {
             "version": "latest"
         }
+        // "ghcr.io/devcontainers/features/common-utils:2": {
+        //     "installGDB": "true"
+        // }
     },
     "customizations": {
         "vscode": {
@@ -21,7 +24,8 @@
                 "ms-python.debugpy",
                 "mhutchie.git-graph",
                 "donjayamanne.githistory",
-                "eamodio.gitlens"
+                "eamodio.gitlens",
+                "njpwerner.autodocstring"
             ]
         },
         "jetbrains": {

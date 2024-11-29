@@ -1,8 +1,8 @@
 {
-    "name": "nav",
+    "name": "ros2driver",
     "dockerComposeFile": "./docker-compose.yml",
-    "service": "rtabmap_container",
-    "workspaceFolder": "/home/Elaina/nav",
+    "service": "ros2driver-container",
+    "workspaceFolder": "/home/Elaina/ros2",
     "shutdownAction": "stopCompose",
     "customizations": {
         "vscode": {

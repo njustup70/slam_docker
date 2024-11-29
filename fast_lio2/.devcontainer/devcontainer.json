@@ -1,0 +1,21 @@
+{
+    "name": "fastlio2",
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "rastlio2_service",
+    "workspaceFolder": "/home/Elaina/slam/fast_lio2",
+    "shutdownAction": "stopCompose",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "llvm-vs-code-extensions.vscode-clangd",
+                "twxs.cmake",
+                "josetr.cmake-language-support-vscode",
+                "ms-vscode.cmake-tools",
+                "cschlosser.doxdocgen"
+            ]
+        },
+        "jetbrains": {
+            "extensions": []
+        }
+    }
+}

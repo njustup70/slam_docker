@@ -1,12 +1,12 @@
 FROM introlab3it/rtabmap:jammy
-
+# FROM introlab3it/rtabmap_ros:humble-latest
 # 定义用户和用户组
 ARG USERNAME=Elaina
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 #安装必要软件
 RUN apt-get update && \
-    apt-get install -y  net-tools nautilus bash-completion clangd  gedit ros-humble-rtabmap-ros \
+    apt-get install -y  net-tools nautilus bash-completion clangd gdb gedit ros-humble-rtabmap-ros \
     nautilus-extension-gnome-terminal dbus-x11 libcanberra-gtk-module libcanberra-gtk3-module git-lfs
 # 创建用户组和用户
 RUN groupadd --gid $USER_GID $USERNAME \

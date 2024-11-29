@@ -1,2 +1,2 @@
-docker exec -it rtabmap_container bash
+docker exec -it fastlivo_container bash
 
