@@ -28,12 +28,13 @@ RUN mkdir packages && cd packages && git clone https://github.com/Livox-SDK/Livo
     && cmake .. && make -j8 && sudo make install 
 #安装雷达ros驱动
 RUN . /opt/ros/noetic/setup.sh \
-    && cd packages && mkdir livo_ws && cd livo_ws && mkdir src && cd src \
+    && cd packages && mkdir ws_livox && cd ws_livox && mkdir src && cd src \
     && git clone https://github.com/Livox-SDK/livox_ros_driver.git && cd .. && catkin_make
 
 RUN  echo 'export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH' >> /home/${USERNAME}/.bashrc \
-    && echo 'source ~/packages/livo_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc    
-
+    && echo 'source ~/packages/ws_livox/devel/setup.bash' >> /home/${USERNAME}/.bashrc  \
+    #&& echo 'source ~/slam/fast_lio2/ros_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc \
+    && echo 'source ~/slam/fast_lio2/packages/catkin_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc 
 USER $USERNAME
 CMD ["/bin/bash"]
 
