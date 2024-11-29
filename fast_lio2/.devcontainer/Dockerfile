@@ -25,16 +25,15 @@ USER ${USERNAME}
 WORKDIR /home/${USERNAME}
 #安装雷达驱动
 RUN mkdir packages && cd packages && git clone https://github.com/Livox-SDK/Livox-SDK.git && cd Livox-SDK/build \
-    && cmake .. && make -j8 && sudo make install 
+    && cmake .. && make -j8 && sudo make install \
+    && echo 'export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH' >> /home/${USERNAME}/.bashrc 
 #安装雷达ros驱动
 RUN . /opt/ros/noetic/setup.sh \
     && cd packages && mkdir ws_livox && cd ws_livox && mkdir src && cd src \
     && git clone https://github.com/Livox-SDK/livox_ros_driver.git && cd .. && catkin_make
 
-RUN  echo 'export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH' >> /home/${USERNAME}/.bashrc \
-    && echo 'source ~/packages/ws_livox/devel/setup.bash' >> /home/${USERNAME}/.bashrc  \
-    #&& echo 'source ~/slam/fast_lio2/ros_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc \
-    && echo 'source ~/slam/fast_lio2/packages/catkin_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc 
+RUN  echo 'source ~/slam/fast_lio2/packages/catkin_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc 
+# && echo 'source ~/slam/fast_lio2/ros_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc  
 USER $USERNAME
 CMD ["/bin/bash"]
 
