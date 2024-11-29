@@ -32,8 +32,9 @@ RUN . /opt/ros/noetic/setup.sh \
     && cd packages && mkdir ws_livox && cd ws_livox && mkdir src && cd src \
     && git clone https://github.com/Livox-SDK/livox_ros_driver.git && cd .. && catkin_make
 
-RUN  echo 'source ~/slam/fast_lio2/packages/catkin_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc 
-# && echo 'source ~/slam/fast_lio2/ros_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc  
+RUN echo 'source ~/slam/fast_lio2/ros_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc  
+#echo 'source ~/slam/fast_lio2/packages/catkin_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc 
+
 USER $USERNAME
 CMD ["/bin/bash"]
 

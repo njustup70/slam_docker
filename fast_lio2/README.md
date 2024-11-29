@@ -6,6 +6,9 @@
 - 此模利用mid360与Imu进行3d点云建图
 ## 使用教程
 ### 1.进入docker[详细方法链接](https://github.com/njustup70/docker)
+### 下面的错误可以忽略，当编译过自己的包后就不会有问题了
+![pic](../.github/docker_warning.png)
+
 ### 2.启动ros1_bridge与roscore
 - 1.roscore
 ```bash
@@ -21,7 +24,7 @@ PATH TO rosbridge$./run.bash
 ### 3.如果第一次进入容器
 - 1.在fast_lio2 的路径下source livox包
 ```bash
-~/slam/fast_lio2/packages/catkin_ws$ source ~/packages/livox_ws/devel/setup.bash
+~/slam/fast_lio2/packages/catkin_ws$ source ~/packages/ws_livox/devel/setup.bash
 ```
 - 2.编译fast_lio2官方包
 ```bash
