@@ -1,5 +1,5 @@
-FROM osrf/ros:noetic-desktop-full
-
+#FROM osrf/ros:noetic-desktop-full
+FROM ghcr.io/sloretz/ros:noetic-desktop-full
 # 定义用户和用户组
 ARG USERNAME=Elaina
 ARG USER_UID=1000
@@ -21,20 +21,19 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && echo 'source /opt/ros/noetic/setup.bash' >> /home/$USERNAME/.bashrc \
     # 使新用户的 `.bashrc` 文件生效
     && chown $USERNAME:$USERNAME /home/$USERNAME/.bashrc
-
-#安装李代数依赖 
 USER ${USERNAME}
 WORKDIR /home/${USERNAME}
-# COPY --chown=${USERNAME}:${USERNAME} ./packages/Sophus /home/${USERNAME}/packages/Sophus
-# RUN cd packages/Sophus && mkdir build && cd build && cmake .. && make && sudo make install
 #安装雷达驱动
 RUN mkdir packages && cd packages && git clone https://github.com/Livox-SDK/Livox-SDK.git && cd Livox-SDK/build \
     && cmake .. && make -j8 && sudo make install 
-
+#安装雷达ros驱动
+RUN . /opt/ros/noetic/setup.sh \
+    && cd packages && mkdir livo_ws && cd livo_ws && mkdir src && cd src \
+    && git clone https://github.com/Livox-SDK/livox_ros_driver.git && cd .. && catkin_make
 
 RUN  echo 'export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH' >> /home/${USERNAME}/.bashrc \
-    && echo 'source ~/slam/fast_livo/packages/ws_livox/devel/setup.bash'  >> /home/${USERNAME}/.bashrc \
-    && echo 'source ~/slam/fast_livo/packages/catkin_ws/devel/setup.bash'  >> /home/${USERNAME}/.bashrc 
+    && echo 'source ~/packages/livo_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc    
+
 USER $USERNAME
 CMD ["/bin/bash"]
 
