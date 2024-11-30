@@ -35,6 +35,10 @@ RUN . /opt/ros/noetic/setup.sh \
 RUN echo 'source ~/slam/fast_lio2/ros_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc  
 #echo 'source ~/slam/fast_lio2/packages/catkin_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc 
 
-USER $USERNAME
+
+USER root
+RUN  apt-get update && apt-get install -y libceres-dev && apt-get install -y software-properties-common\
+    &&  add-apt-repository ppa:borglab/gtsam-develop && apt-get update && apt-get install -y libgtsam-dev
+
 CMD ["/bin/bash"]
 
