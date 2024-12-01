@@ -35,6 +35,8 @@ RUN . /opt/ros/noetic/setup.sh \
 RUN echo 'source ~/slam/fast_lio2/ros_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc  
 #echo 'source ~/slam/fast_lio2/packages/catkin_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc 
 
-USER $USERNAME
+# USER $USERNAME
+# WORKDIR /home/${USERNAME}/slam/fast_lio2/packages/catkin_ws/src
+# RUN git clone --recurse-submodules https://github.com/hku-mars/FAST_LIO.git
 CMD ["/bin/bash"]
 
