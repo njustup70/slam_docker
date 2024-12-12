@@ -1,2 +1,2 @@
-git clone --recurse-submodules https://github.com/hku-mars/FAST_LIO.git fast_lio2/packages/catkin_ws/src/FAST_LIO
+git clone --recurse-submodules https://github.com/gisbi-kim/FAST_LIO_SLAM.git fast_lio2/packages/catkin_ws/src/FAST_LIO_SLAM
 git clone --recurse-submodules https://github.com/hku-mars/FAST-LIVO.git fast_livo/packages/catkin_ws/src/FAST_LIVO
