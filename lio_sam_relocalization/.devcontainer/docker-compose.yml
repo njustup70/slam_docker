@@ -1,11 +1,11 @@
 version: '3'
 services:
-  rastlio2_service:
+  lio_sam_relocalization_container:
     build:
-      context: ..
-      dockerfile: .devcontainer/Dockerfile
-    image: elaina/fastlio2-container
-    container_name: fastlio2_container
+      context: .
+      dockerfile: Dockerfile
+    image: elaina/lio_sam_relocalization
+    container_name: lio_sam_relocalization_container
     environment:
       - DISPLAY=${DISPLAY}
       - NVIDIA_VISIBLE_DEVICES=all
@@ -25,5 +25,5 @@ services:
     tty: true
     user: "Elaina"
     runtime: nvidia
-    working_dir: "/home/Elaina/slam/fast_lio2" # 指定默认工作目录
+    working_dir: "/home/Elaina/slam/lio_sam_relocalization" # 指定默认工作目录
     entrypoint: /home/Elaina/slam/docker_start.sh
