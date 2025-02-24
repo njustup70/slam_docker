@@ -10,6 +10,5 @@ RUN sudo add-apt-repository ppa:borglab/gtsam-release-4.0 \
 RUN mkdir -p catkin_ws/src && cd catkin_ws/src \
     && git clone https://github.com/harshalkataria/LIO-SAM-Localization.git \ 
     && git clone https://github.com/YWL0720/FAST-LOCALIZATION.git \
-    && git clone https://github.com/vectr-ucla/direct_lidar_odometry.git \
     && cd .. && . /home/${USERNAME}/packages/ws_livox/devel/setup.sh && catkin_make \
     && echo 'source ~/packages/catkin_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc
