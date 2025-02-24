@@ -18,8 +18,8 @@
   <node ns="$(arg robot_namespace)" name="dlo_odom" pkg="direct_lidar_odometry" type="dlo_odom_node" output="screen" clear_params="true">
 
     <!-- Load parameters -->
-    <rosparam file="$(find relocalization)/config/dio.yaml" command="load"/>
-    <rosparam file="$(find relocalization)/config/params.yaml" command="load"/>
+    <rosparam file="$(find my_dlo)/config/dio.yaml" command="load"/>
+    <rosparam file="$(find my_dlo)/config/params.yaml" command="load"/>
 
     <!-- Subscriptions -->
     <remap from="~pointcloud" to="$(arg pointcloud_topic)"/>
@@ -37,7 +37,7 @@
   <node ns="$(arg robot_namespace)" name="dlo_map" pkg="direct_lidar_odometry" type="dlo_map_node" output="screen" clear_params="true">
 
     <!-- Load parameters -->
-    <rosparam file="$(find relocalization)/config/dio.yaml" command="load"/>
+    <rosparam file="$(find my_dlo)/config/dio.yaml" command="load"/>
 
     <!-- Subscriptions -->
     <remap from="~keyframes" to="dlo/odom_node/pointcloud/keyframe"/>
