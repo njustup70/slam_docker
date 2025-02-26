@@ -45,13 +45,9 @@ RUN mkdir -p ~/liosam_ws/src \
     && git config --global http.postBuffer 524288000 \
     && git config --global http.timeout 300 \
     && git clone --depth 1 --branch master https://github.com/TixiaoShan/LIO-SAM.git 
-    
+ 
 RUN cd ~/liosam_ws \
     && /bin/bash -c "source /opt/ros/kinetic/setup.bash && catkin_make "
-    
-
-RUN cd ~/liosam_ws \
-    && /bin/bash -c "chmod +x ./devel/setup.sh &&./devel/setup.sh"
 
 # 切换回 Nagisa 用户
 USER $USERNAME
