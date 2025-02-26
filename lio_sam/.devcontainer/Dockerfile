@@ -27,27 +27,38 @@ RUN apt-get update \
     && apt-get update \
     && apt install -y libgtsam-dev libgtsam-unstable-dev \
     && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update \
+    && apt-get install -y nautilus \
+    && apt-get install -y gedit \
+    && rm -rf /var/lib/apt/lists/*
+
+# 添加 ROS 环境设置到 .bashrc
+RUN echo "source /opt/ros/kinetic/setup.bash" >> /home/${USERNAME}/.bashrc
+
 # 切换回 Nagisa 用户
 USER $USERNAME
-
 
 # 创建工作空间并克隆代码库
 RUN mkdir -p ~/liosam_ws/src \
     && cd ~/liosam_ws/src \
     && git config --global http.postBuffer 524288000 \
     && git config --global http.timeout 300 \
-    && git clone --depth 1 --branch master https://github.com/TixiaoShan/LIO-SAM.git \
-    && cd .. \
-    && /bin/bash -c "source /opt/ros/kinetic/setup.bash && catkin_make"
+    && git clone --depth 1 --branch master https://github.com/TixiaoShan/LIO-SAM.git 
+    
+RUN cd ~/liosam_ws \
+    && /bin/bash -c "source /opt/ros/kinetic/setup.bash && catkin_make "
+    
 
+RUN cd ~/liosam_ws \
+    && /bin/bash -c "chmod +x ./devel/setup.sh &&./devel/setup.sh"
 
+# 切换回 Nagisa 用户
+USER $USERNAME
 
-# 添加 ROS 环境设置到 .bashrc
-USER root
-RUN echo 'export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH' >> /home/${USERNAME}/.bashrc \
-    && echo "source /opt/ros/kinetic/setup.bash" >> /home/${USERNAME}/.bashrc
-
-# 设置容器启动时默认执行的命令
-CMD ["/bin/bash"]
+# 设置工作目录
 WORKDIR /home/$USERNAME
+
+# 设置容器启动时默认执行的命令，并自动加载工作空间
+CMD ["/bin/bash"]
 
