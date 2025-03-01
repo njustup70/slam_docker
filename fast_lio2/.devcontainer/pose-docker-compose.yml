@@ -1,11 +1,11 @@
 version: '3'
 services:
-  fastlio2_service:
+  fast_lio2_pose:
     build:
       context: ..
-      dockerfile: .devcontainer/Dockerfile
-    image: elaina/fastlio2-image
-    container_name: fastlio2_container
+      dockerfile: .devcontainer/pose.Dockerfile
+    image: elaina/fastlio2-pose-image
+    container_name: fastlio2_pose_container
     environment:
       - DISPLAY=${DISPLAY}
       - NVIDIA_VISIBLE_DEVICES=all
