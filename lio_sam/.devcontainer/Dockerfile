@@ -17,6 +17,7 @@ RUN apt-get update \
     && curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add - \
     && apt-get update \
     && apt-get install -y ros-kinetic-navigation \
+    && apt-get install -y ros-kinetic-rqt-tf-tree \
     && apt-get install -y ros-kinetic-robot-localization \
     && apt-get install -y ros-kinetic-robot-state-publisher \
     && rm -rf /var/lib/apt/lists/*
