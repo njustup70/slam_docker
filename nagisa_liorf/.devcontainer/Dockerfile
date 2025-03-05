@@ -7,7 +7,8 @@ ARG USER_GID=1000
 ARG GROUP_NAME=wheel
 
 # 创建用户并指定 UID 和 GID
-RUN useradd -m -u $USER_UID -g $GROUP_NAME -G sudo,wheel $USERNAME
+RUN useradd -m -u $USER_UID -g $GROUP_NAME -G sudo,wheel $USERNAME \
+    && echo "umask 002" | sudo tee -a /etc/profile /etc/bash.bashrc
 
 # 设置工作目录
 WORKDIR /home/$USERNAME
