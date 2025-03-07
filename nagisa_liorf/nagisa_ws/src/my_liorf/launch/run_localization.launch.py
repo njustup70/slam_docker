@@ -10,7 +10,7 @@ def generate_launch_description():
     share_dir_src = get_package_share_directory('liorf_localization')
     share_dir_config = get_package_share_directory('my_liorf')
     parameter_file = LaunchConfiguration('params_file')
-    rviz_config_file = os.path.join(share_dir_config, 'rviz', 'localization.rviz')
+    rviz_config_file = os.path.join(share_dir_config, 'rviz', 'localization1.rviz')
 
     params_declare = DeclareLaunchArgument(
         'params_file',
