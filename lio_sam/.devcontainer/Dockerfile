@@ -2,7 +2,7 @@ FROM osrf/ros:kinetic-desktop-full-xenial
 
 # 定义用户和用户ID
 ARG USERNAME=Nagisa
-ARG USER_UID=1001
+ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
 # 创建用户
