@@ -11,7 +11,7 @@ for dir in install build log devel; do
 done
 #绕过交互式检查,通过-i选项强制bash以交互模式运行
 
-bash -i -c "source ~/.bashrc || catkin_make"
+bash -i -c "source ~/.bashrc;catkin_make"
 setup_file="$(pwd)/devel/setup.bash"
 if ! grep -qFx "source \"$setup_file\"" ~/.bashrc; then
     echo "source \"$setup_file\"" >> ~/.bashrc
