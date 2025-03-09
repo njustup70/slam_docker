@@ -46,6 +46,8 @@ PATH TO rosbridge$./run.bash
 ### source解决办法(nagisa's version):
 - ros1下存在catkin_make的定格问题，会导致不同工作空间之间的source出现冲突找不到功能包的问题
 - 构建一个永不再编译的，专门管理source的新工作空间，在新增工作空间时仅需修改管理空间的devel/_setup_util.py文件即可。[原帖链接](https://immortalqx.github.io/2021/07/17/ros-notes-3/)
+### bug warning: 
+- docker中将用户组抽象为个人基础镜像的想法不是一个好的想法，dockerfile中的uid和主机里的uid需要相符才能够解决权限问题（要么就将权限开放给所有用户），否则进入容器后会大量报错permission denied。
 
 ## 源码连接
 ### [LIO-SAM](https://github.com/TixiaoShan/LIO-SAM)
