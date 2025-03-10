@@ -1,5 +1,5 @@
 common:
-    lid_topic:  "/livox/lidar/raw"
+    lid_topic:  "/livox/lidar/pc"
     imu_topic:  "/livox/imu"
     time_sync_en: true         # ONLY turn on when external time synchronization is really not possible
     time_offset_lidar_to_imu: 0.0 # Time offset between lidar and IMU calibrated by other algorithms, e.g. LI-Init (can be found in README).
@@ -22,7 +22,7 @@ mapping:
     extrinsic_R: [ 1, 0, 0,
                    0, 1, 0,
                    0, 0, 1]
-
+    save_pcd: true
 publish:
     path_en:  false
     scan_publish_en:  true       # false: close all the point cloud output
