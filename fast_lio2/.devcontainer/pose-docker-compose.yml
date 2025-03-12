@@ -18,8 +18,8 @@ services:
       - ./../..:/home/Elaina/slam
       - /dev:/dev
       #地图存放
-      - ../map/fast_lio:/home/Elaina/packages/catkin_ws/src/FAST_LIO/PCD
-      - ../map/fast_lio/pose:/home/Elaina/packages/catkin_ws/src/FAST_LIO/map
+      - ../map:/home/Elaina/packages/catkin_ws/src/FAST_LIO/PCD
+      - ../map/pose:/home/Elaina/packages/catkin_ws/src/FAST_LIO/map
     network_mode: host
     pid: "host" # 添加 pid 命名空间共享
     ipc: "host" # 添加 ipc 命名空间共享    
