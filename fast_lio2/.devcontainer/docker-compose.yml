@@ -17,7 +17,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ./../..:/home/Elaina/slam
       - /dev:/dev
-      - ../../map/fast_lio:/home/Elaina/packages/catkin_ws/src/FAST_LIO/PCD
+      - ../map/fast_lio:/home/Elaina/packages/catkin_ws/src/FAST_LIO/PCD
     network_mode: host
     pid: "host" # 添加 pid 命名空间共享
     ipc: "host" # 添加 ipc 命名空间共享    
