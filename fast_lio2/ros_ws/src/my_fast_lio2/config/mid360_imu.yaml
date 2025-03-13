@@ -1,6 +1,6 @@
 common:
     lid_topic:  "/livox/lidar/pc"
-    imu_topic:  "/livox/imu"
+    imu_topic:  "/imu"
 
 preprocess:
     lidar_type: 2                # Livox series LiDAR
