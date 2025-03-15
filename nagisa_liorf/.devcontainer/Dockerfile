@@ -3,7 +3,7 @@ FROM elainasuki/ros:ros2-humble-full-v3
 # 定义用户和用户组
 ARG USERNAME=Nagisa
 ARG USER_UID=1001
-ARG USER_GID=1000
+ARG USER_GID=1001
 ARG GROUP_NAME=wheel
 
 # 创建用户并指定 UID 和 GID

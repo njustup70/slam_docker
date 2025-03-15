@@ -1,6 +1,6 @@
 version: '3.9'
 services:
-  visual-service:
+  liorf-service:
     build:
       context: .
       dockerfile: Dockerfile
