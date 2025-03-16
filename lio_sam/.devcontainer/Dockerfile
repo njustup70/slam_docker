@@ -4,11 +4,16 @@ FROM elainasuki/ros:ros-noetic-full
 #定义用户
 ARG USERNAME=yc-dlan
 
+# 设置工作目录
+WORKDIR /home/$USERNAME/packages
 # 添加用户
 USER root
 
 RUN useradd -m -u 1001 -G wheel -s /bin/bash yc-dlan \
     && echo "umask 002" | sudo tee -a /etc/profile /etc/bash.bashrc
+
+# 修改 livox_ws 文件夹权限
+#RUN chown -R ${USERNAME}:${USERNAME} /home/Elaina/packages/livox_ws
 
 # 安装基础依赖
 RUN apt-get update \
@@ -58,7 +63,16 @@ RUN apt-get update && apt-get install -y \
     bash-completion \
     && apt-get upgrade -y
 
-RUN mkdir -p /ros_ws/src
+# 添加 ROS 环境设置到 .bashrc
+RUN echo "source /opt/ros/noetic/setup.bash" >> /home/${USERNAME}/.bashrc
+
+# 创建工作空间并克隆代码库
+RUN mkdir -p catkin_ws/src && cd catkin_ws/src \
+    && git config --global http.postBuffer 524288000 \
+    && git config --global http.timeout 300 \
+    && git clone --depth 1 --branch master https://github.com/harshalkataria/LIO-SAM-Localization.git \
+    && cd .. && . /home/Elaina/packages/ws_livox/devel/setup.sh && catkin_make \
+    && echo 'source ~/packages/catkin_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc
 
 USER ${USERNAME}
 

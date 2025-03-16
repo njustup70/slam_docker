@@ -16,7 +16,7 @@ services:
     volumes:
       # - /~/.Xauthority:/tmp/.Xauthority
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ./..:/home/yc-dlan/packages
+      - ./..:/home/yc-dlan/slam_docker/lio_sam
       - /dev:/dev
       #地图存放
       # - ../../maps/lio_sam:/home/yc-dlan/packages/ros_ws/src/LIO-SAM-Localization/PCD
@@ -27,4 +27,4 @@ services:
     stdin_open: true
     tty: true
     user: "yc-dlan"
-    working_dir: "/home/yc-dlan/slam_docker/lio_sam/ros_ws" # 指定默认工作目录
+    working_dir: "/home/yc-dlan" # 指定默认工作目录
