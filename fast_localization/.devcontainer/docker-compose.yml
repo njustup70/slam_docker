@@ -1,6 +1,6 @@
 version: '3'
 services:
-  fastlio2_service:
+  fastlio_localization:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
