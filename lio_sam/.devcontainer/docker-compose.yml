@@ -19,7 +19,7 @@ services:
       - ./..:/home/yc-dlan/slam_docker/lio_sam
       - /dev:/dev
       #地图存放
-      # - ../../maps/lio_sam:/home/yc-dlan/packages/ros_ws/src/LIO-SAM-Localization/PCD
+      - ../maps:/home/ubuntu/testVolume-1/res-0-highbay-tracking-test-5-minute-start-115-sec-highres-with-intensity
     network_mode: host
     pid: "host" # 添加 pid 命名空间共享
     ipc: "host" # 添加 ipc 命名空间共享    
