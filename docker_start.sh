@@ -17,4 +17,4 @@ if ! grep -qFx "source \"$setup_file\"" ~/.bashrc; then
     echo "source \"$setup_file\"" >> ~/.bashrc
 fi
 #打开终端保持容器运行
-exec /bin/bash
+# exec /bin/bash
