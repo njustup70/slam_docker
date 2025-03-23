@@ -67,7 +67,7 @@ PS：由于权限问题，sudo必要
 - run.launch
 ```bash
 >(bash) ~/packages/catkin_ws$ source devel/setup.bash
->(bash) ~/packages/catkin_ws$ roslaunch lio_sam_localization run.launch config_file:="./src/LIO-SAM-Localization/config/params_gem.yaml"
+>(bash) ~/packages/catkin_ws$ roslaunch lio_sam_localization run.launch config_file:="./src/LIO-SAM-Localization/config/params.yaml"
 >(bash) ~/packages/catkin_ws$ rosrun tf2_ros static_transform_publisher 22.748378703042732 -1.1095682571420336 -0.10003287520306003 3.526007880438855e-07 1.0449289132344871e-05 -0.006435430963485527 0.9999792923450977 world map
 >(bash) ~/packages/catkin_ws$ rosbag play /home/ubuntu/testVolume-1/highbay_track-5-minutes-highres_2024-05-20-13-53-11.bag --start 115
 >(bash) ~/packages/catkin_ws$ rosservice call /lio_sam/save_map 0.2 "/home/ubuntu/testVolume-1/<sample-map-dir-name>/"
