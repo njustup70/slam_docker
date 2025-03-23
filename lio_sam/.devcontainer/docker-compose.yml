@@ -20,6 +20,8 @@ services:
       - /dev:/dev
       #地图存放
       - ../maps:/home/ubuntu/testVolume-1/res-0-highbay-tracking-test-5-minute-start-115-sec-highres-with-intensity
+      #参数文件更改
+      - ../config:/home/yc-dlan/packages/catkin_ws/src/LIO-SAM-Localization/config
     network_mode: host
     pid: "host" # 添加 pid 命名空间共享
     ipc: "host" # 添加 ipc 命名空间共享    
