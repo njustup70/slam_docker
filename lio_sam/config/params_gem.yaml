@@ -4,6 +4,7 @@ lio_sam:
   # Topics
   pointCloudTopic: "/livox/lidar/pc"               # Point cloud data
   imuTopic: "/livox/imu"                         # IMU data
+  #imuTopic: "imu_transformed"
   odomTopic: "odometry/imu"                   # IMU pre-preintegration odometry, same frequency as IMU
   gpsTopic: "odometry/gpsz"                   # GPS odometry topic from navsat, see module_navsat.launch file
 
@@ -39,7 +40,8 @@ lio_sam:
   imuGyrNoise: 1.0e-04
   imuAccBiasN: 0.19
   imuGyrBiasN: 0.04
-  imuGravity: 1.02
+  #imuGravity: 1.02
+  imuGravity: 9.82
   imuRPYWeight: 0.00
 
   # Extrinsics: T_lb (lidar -> imu)
