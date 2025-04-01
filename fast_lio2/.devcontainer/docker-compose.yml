@@ -1,9 +1,9 @@
 version: '3'
 services:
   fastlio2_service:
-    build:
-      context: ..
-      dockerfile: .devcontainer/Dockerfile
+    # build:
+    #   context: ..
+    #   dockerfile: .devcontainer/Dockerfile
     image: elaina/fastlio2-image
     container_name: fastlio2_container
     environment:
