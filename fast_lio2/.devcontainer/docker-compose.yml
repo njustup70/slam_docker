@@ -18,7 +18,6 @@ services:
       - ./../..:/home/Elaina/slam
       - /dev:/dev
       - ../map:/home/Elaina/packages/catkin_ws/src/FAST_LIO/PCD
-      - ../result:/home/Elaina/packages/catkin_ws/src/LiDAR_IMU_Init/result
     network_mode: host
     pid: "host" # 添加 pid 命名空间共享
     ipc: "host" # 添加 ipc 命名空间共享    
