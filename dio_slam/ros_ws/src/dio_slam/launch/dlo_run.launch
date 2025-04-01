@@ -12,7 +12,7 @@
   <arg name="rviz" default="true"/>
 
   <arg name="pointcloud_topic" default="livox/lidar"/>
-  <arg name="imu_topic" default="livox/imu"/>
+  <arg name="imu_topic" default="imu_transformed"/>
 
   <!-- DLO Odometry Node -->
   <node ns="$(arg robot_namespace)" name="dlo_odom" pkg="direct_lidar_odometry" type="dlo_odom_node" output="screen" clear_params="true">

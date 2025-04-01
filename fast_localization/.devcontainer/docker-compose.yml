@@ -1,11 +1,11 @@
 version: '3'
 services:
-  fastlio2_service:
-    # build:
-    #   context: ..
-    #   dockerfile: .devcontainer/Dockerfile
-    image: elaina/fastlio2-image
-    container_name: fastlio2_container
+  fastlio_localization:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    image: elaina/fast_localization_image
+    container_name: fast_localization_container
     environment:
       - DISPLAY=${DISPLAY}
       - NVIDIA_VISIBLE_DEVICES=all
@@ -17,7 +17,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ./../..:/home/Elaina/slam
       - /dev:/dev
-      - ../map:/home/Elaina/packages/catkin_ws/src/FAST_LIO/PCD
+      - ../map:/home/Elaina/packages/catkin_ws/src/FAST-LOCALIZATION/map
     network_mode: host
     pid: "host" # 添加 pid 命名空间共享
     ipc: "host" # 添加 ipc 命名空间共享    
@@ -26,5 +26,5 @@ services:
     tty: true
     user: "Elaina"
     # runtime: nvidia
-    working_dir: "/home/Elaina/slam/fast_lio2" # 指定默认工作目录
+    working_dir: "/home/Elaina/slam/fast_localization" # 指定默认工作目录
     entrypoint: [ "/bin/bash", "-c", "/home/Elaina/slam/docker_start.sh && exec /bin/bash" ]
