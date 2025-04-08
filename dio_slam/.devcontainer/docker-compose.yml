@@ -1,9 +1,9 @@
 version: '3'
 services:
   dio_slam_service:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
     image: elaina/dio_slam
     container_name: dio_slam_container
     environment:
