@@ -8,6 +8,8 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/Nagisa/packages/lio_sam/nagisa_ws/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/Nagisa/packages/lio_sam/nagisa_ws/devel/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/Nagisa/packages/lio_sam/nagisa_ws/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/Nagisa/packages/lio_sam/nagisa_ws/build'
-export ROSLISP_PACKAGE_DIRECTORIES="/home/Nagisa/packages/lio_sam/nagisa_ws/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
+export ROSLISP_PACKAGE_DIRECTORIES='/home/Nagisa/packages/lio_sam/nagisa_ws/devel/share/common-lisp'
 export ROS_PACKAGE_PATH="/home/Nagisa/packages/lio_sam/nagisa_ws/src:$ROS_PACKAGE_PATH"

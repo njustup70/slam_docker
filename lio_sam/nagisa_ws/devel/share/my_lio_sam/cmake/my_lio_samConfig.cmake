@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/Nagisa/packages/lio_sam/nagisa_ws/devel/lib;/home/Nagisa/liosam_ws/devel/lib;/home/Nagisa/packages/lio_sam/ros_manager/devel/lib;/opt/ros/kinetic/lib)
+    foreach(path /home/Nagisa/packages/lio_sam/nagisa_ws/devel/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
