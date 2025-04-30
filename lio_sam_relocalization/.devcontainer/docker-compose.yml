@@ -1,11 +1,11 @@
 version: '3'
 services:
-  fastlio2_service:
-    # build:
-    #   context: ..
-    #   dockerfile: .devcontainer/Dockerfile
-    image: elaina/fastlio2-image
-    container_name: fastlio2_container
+  lio_sam_relocalization_container:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: elaina/lio_sam_relocalization
+    container_name: lio_sam_relocalization_container
     environment:
       - DISPLAY=${DISPLAY}
       - NVIDIA_VISIBLE_DEVICES=all
@@ -17,7 +17,6 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ./../..:/home/Elaina/slam
       - /dev:/dev
-      - ../map:/home/Elaina/packages/catkin_ws/src/FAST_LIO/PCD
     network_mode: host
     pid: "host" # 添加 pid 命名空间共享
     ipc: "host" # 添加 ipc 命名空间共享    
@@ -25,6 +24,6 @@ services:
     stdin_open: true
     tty: true
     user: "Elaina"
-    # runtime: nvidia
-    working_dir: "/home/Elaina/slam/fast_lio2" # 指定默认工作目录
-    entrypoint: [ "/bin/bash", "-i", "-c", "/home/Elaina/slam/docker_start.sh && source ~/.bashrc &&  roslaunch my_fast_lio2 mapping_mid360.launch rviz:=false" ]
+    runtime: nvidia
+    working_dir: "/home/Elaina/slam/lio_sam_relocalization" # 指定默认工作目录
+    entrypoint: /home/Elaina/slam/docker_start.sh

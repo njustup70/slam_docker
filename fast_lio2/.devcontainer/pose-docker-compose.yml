@@ -1,11 +1,11 @@
 version: '3'
 services:
-  fastlio2_service:
+  fast_lio2_pose:
     # build:
     #   context: ..
-    #   dockerfile: .devcontainer/Dockerfile
-    image: elaina/fastlio2-image
-    container_name: fastlio2_container
+    #   dockerfile: .devcontainer/pose.Dockerfile
+    image: elaina/fastlio2-pose-image
+    container_name: fastlio2_pose_container
     environment:
       - DISPLAY=${DISPLAY}
       - NVIDIA_VISIBLE_DEVICES=all
@@ -17,7 +17,9 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ./../..:/home/Elaina/slam
       - /dev:/dev
+      #地图存放
       - ../map:/home/Elaina/packages/catkin_ws/src/FAST_LIO/PCD
+      - ../map/pose:/home/Elaina/packages/catkin_ws/src/FAST_LIO/map
     network_mode: host
     pid: "host" # 添加 pid 命名空间共享
     ipc: "host" # 添加 ipc 命名空间共享    
@@ -27,4 +29,4 @@ services:
     user: "Elaina"
     # runtime: nvidia
     working_dir: "/home/Elaina/slam/fast_lio2" # 指定默认工作目录
-    entrypoint: [ "/bin/bash", "-i", "-c", "/home/Elaina/slam/docker_start.sh && source ~/.bashrc &&  roslaunch my_fast_lio2 mapping_mid360.launch rviz:=false" ]
+    entrypoint: [ "/bin/bash", "-c", "/home/Elaina/slam/docker_start.sh && /home/Elaina/slam/fast_lio2/clean_map.bash && exec /bin/bash" ]
