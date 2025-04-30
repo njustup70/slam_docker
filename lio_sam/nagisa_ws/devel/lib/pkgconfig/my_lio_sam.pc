@@ -1,0 +1,8 @@
+prefix=/home/Nagisa/packages/lio_sam/nagisa_ws/devel
+
+Name: my_lio_sam
+Description: Description of my_lio_sam
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

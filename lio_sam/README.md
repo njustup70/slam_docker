@@ -1,87 +1,69 @@
-# lio_sam_location算法开发
-# 维护
-维护者:陈成     
-QQ:1940275781     
+<div align="center">
+<h1>lio_sam模块</h1>
+</div>
+
+## 维护者
+- nagisa 
+- QQ：2964793117
+
+## 仓库介绍
+- 此模利用mid360与Imu进行3d点云建图
+
 ## 使用教程
-请严格按照我的构建思路，如果出现报错请联系我
-#### 注意事项
-#### 1.克隆主播的仓库
-选一个你喜欢的地方准备安装仓库。
+### 1.进入docker[详细方法链接](https://github.com/njustup70/docker)
+### 下面的错误可以忽略，当编译过自己的包后就不会有问题了
+![pic](../.github/docker_warning.png)
+
+### 2.启动ros1_bridge与roscore
+- 1.roscore
 ```bash
->(docker)$ git clone -branch Dlan_lio_sam hhttps://github.com/njustup70/slam_docker.git（按HTTP复制）   
->(docker)$ git clone -branch Dlan_lio_sam git@github.com:njustup70/slam_docker.git（按SSH复制，如果没有配置过SSH密钥则用上面那种）   
+roscore
 ```
-#### 2.进入下载好的仓库
+- 2.启动ros1_bridge [链接](https://github.com/njustup70/docker/tree/master/rosbridge)
 ```bash
->(docker) ~$ cd lio_sam
+PATH TO rosbridge$./run.bash
 ```
-#### 3.构建容器
+![pic](./../.github/rosbridge.png)
+- 左边为rosbridge右边为roscore
+
+### 3.使用方法
+- 1.构建容器
 ```bash
->(docker) ~/lio_sam$ cd .devcontainer/
->(docker) ~/lio_sam/.devcontainer$ docker-compose up --build
+~/slam_docker/lio_sam/.devcontainer$ docker-compose up --b
 ```
-如果构建成功你应该会看到如下式样：  
-> Starting lio_sam_container ... done   
-> Attaching to lio_sam_container
-#### 4.进入容器
+- 2.进入容器
 ```bash
->(docker) ~/lio_sam$ cd .devcontainer/
->(docker) ~/lio_sam/.devcontainer$ docker-compose up -d（-d表示后台运行）
->(docker) ~/lio_sam/.devcontainer$ docker exec -it lio_sam_container bash
+~/slam_docker/lio_sam/.devcontainer$ docker-compose up --d && docker exec -it lio_sam_container bash 
 ```
-完成上面的操作之后，你应该顺利进入了我们的lio_sam_container容器当中
-#### 5.编译前准备工作
+- 3.source步骤（已解决）
 ```bash
->(docker) xhost local:
+~/packages/lio_sam/ros_manager$ source devel/setup.bash
 ```
-以上操作用于添加当前用户进入网络连接
-#### 6.编译(此处的编译流程严格按我的流程来，不然很容易斯)
-我们将功能包直接装在容器内，防止在本地堆石，共有两个文件夹，LIO—SAM在packages文件夹中     
-PS：由于权限问题，sudo必要
-```bashcache/mesa_shader_cache
->(bash) cd packages/catkin_ws
->(bash) ~/packages/catkin_ws$ sudo catkin config --extend /opt/ros/noetic/
->(bash) ~/packages/catkin_ws$ sudo catkin init
->(bash) ~/packages/catkin_ws$ sudo catkin build
-```
-理论上来说，此时应该就可以编译通过了，如果遇到其他报错，可交由我维护     
-诡异的是，由于权限问题，部分launch带动的mkdir指令无法执行,于是我们要在下面认为创建并更改权限       
+- 4.运行lio_sam
 ```bash
->(bash) ~/packages/catkin_ws$ sudo mkdir -p /home/yc-dlan/.ros
->(bash) ~/packages/catkin_ws$ sudo chown -R yc-dlan:yc-dlan ~/.ros
+~/packages/lio_sam/nagisa_ws$ roslaunch my_lio_sam run.launch
 ```
-```bash
->(bash) ~/packages/catkin_ws$ sudo mkdir -p /home/yc-dlan/.rviz
->(bash) ~/packages/catkin_ws$ sudo chown -R yc-dlan:yc-dlan ~/.rviz
-```
-```bash
->(bash) ~/packages/catkin_ws$ sudo mkdir -p /home/yc-dlan/.cache
->(bash) ~/packages/catkin_ws$ sudo chown -R yc-dlan:yc-dlan ~/.cache
-```
-```bash
->(bash) ~/packages/catkin_ws$ sudo mkdir -p /home/yc-dlan/.cache/mesa_shader_cache
->(bash) ~/packages/catkin_ws$ sudo chown -R yc-dlan:yc-dlan ~/.cache/mesa_shader_cache
-```
-#### 7.launch
-此时我们仅需要启动launch文件就可以了，并且launch文件有两个，有不同的使用方式
-- run.launch
-```bash
->(bash) ~/packages/catkin_ws$ source devel/setup.bash
->(bash) ~/packages/catkin_ws$ roslaunch lio_sam_localization run.launch config_file:="./src/LIO-SAM-Localization/config/params.yaml"
->(bash) ~/packages/catkin_ws$ rosrun tf2_ros static_transform_publisher 22.748378703042732 -1.1095682571420336 -0.10003287520306003 3.526007880438855e-07 1.0449289132344871e-05 -0.006435430963485527 0.9999792923450977 world map
->(bash) ~/packages/catkin_ws$ rosbag play /home/ubuntu/testVolume-1/highbay_track-5-minutes-highres_2024-05-20-13-53-11.bag --start 115
->(bash) ~/packages/catkin_ws$ rosservice call /lio_sam/save_map 0.2 "/home/ubuntu/testVolume-1/<sample-map-dir-name>/"
-```
-- run_loc.launch
-```bash
->(bash) ~/packages/catkin_ws$ source devel/setup.bash
-```
-在运行就下来语句时，请先手动设置loadmapfiledir文件路径
-```bash
->(bash) ~/packages/catkin_ws$ rosparam set /loadMapFiledir "/home/ubuntu/testVolume-1/res-0-highbay-tracking-test-5-minute-start-115-sec-highres-with-intensity"
-```
-```bash
->(bash) ~/packages/catkin_ws$ roslaunch lio_sam_localization run_loc.launch config_file:="./src/LIO-SAM-Localization/config/params_gem.yaml"
->(bash) ~/packages/catkin_ws$ rosrun tf2_ros static_transform_publisher 22.748378703042732 -1.1095682571420336 -0.10003287520306003 3.526007880438855e-07 1.0449289132344871e-05 -0.006435430963485527 0.9999792923450977 world map
->(bash) ~/packages/catkin_ws$ rosbag play /home/ubuntu/testVolume-1/highbay_track-5-minutes-highres_2024-05-20-13-53-11.bag --start 115
-```
+## 注释部分
+
+### 1.注意事项:上面的三个步骤一定一定按顺序执行，不然会出现ROS 的source 覆盖问题
+
+### 2.source解决办法(nagisa's version):
+- ros1下存在catkin_make的定格问题，会导致不同工作空间之间的source出现冲突找不到功能包的问题
+- 构建一个永不再编译的，专门管理source的新工作空间，在新增工作空间时仅需修改管理空间的devel/_setup_util.py文件即可。[原帖链接](https://immortalqx.github.io/2021/07/17/ros-notes-3/)
+
+### 3.bug warning: 
+- docker中将用户组抽象为个人基础镜像的想法不是一个好的想法，dockerfile中的uid和主机里的uid需要相符才能够解决权限问题（要么就将权限开放给所有用户），否则进入容器后会大量报错permission denied。
+
+
+## 写给实机部署的开发者的容器联合开发
+- 1.本容器开启roscore
+- 2.本容器下载[官网数据集](https://drive.google.com/drive/folders/1gJHwfdHCRdjP7vuT556pv8atqrCJPbUq)并运行(在后源码链接中的官方包README中还有更多数据集合)
+- 3.按照前述方法运行lio_sam
+- 4.若需要保留这次SLAM建图先导地图，请在yaml中的savePCD改为true
+
+
+
+## 源码连接
+### [LIO-SAM](https://github.com/TixiaoShan/LIO-SAM)
+ - 官方仓库
+
