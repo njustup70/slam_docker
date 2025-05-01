@@ -5,8 +5,8 @@ ARG USERNAME=Elaina
 WORKDIR /home/$USERNAME/packages
 USER root
 RUN mkdir -p catkin_ws/src && cd catkin_ws/src && git clone --recurse-submodules https://github.com/YWL0720/FAST-LOCALIZATION.git
-COPY  include /home/$USERNAME/packages/catkin_ws/devel/include/fast_localization
-RUN cd catkin_ws && . /home/${USERNAME}/packages/ws_livox/devel/setup.sh && catkin_make \
+# COPY  include /home/$USERNAME/packages/catkin_ws/devel/include
+RUN cd catkin_ws && . /home/${USERNAME}/packages/ws_livox/devel/setup.sh && catkin_make  \
     && echo 'source ~/packages/catkin_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc
 CMD ["/bin/bash"]
 
