@@ -1,0 +1,1 @@
+docker build -t elaina/dio_slam .
