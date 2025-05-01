@@ -4,7 +4,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: elaina/dio_slam
+    image: elainasuki/rc2025:dio_slam
     container_name: dio_slam_container
     environment:
       - DISPLAY=${DISPLAY}
