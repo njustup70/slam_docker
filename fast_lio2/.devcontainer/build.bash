@@ -20,7 +20,7 @@ if [[ "${BUILD_ARM64}" == "true" ]]; then
 fi
 
 # 构建逻辑
-if [[ "$1" == "--git-action" ]]; then
+if [[ "$1" == "--github-action" ]]; then
     echo "GitHub Action 模式：构建并推送两个镜像"
 
     docker buildx build \
