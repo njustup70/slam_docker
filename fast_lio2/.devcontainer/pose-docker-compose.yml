@@ -4,7 +4,7 @@ services:
     # build:
     #   context: ..
     #   dockerfile: .devcontainer/pose.Dockerfile
-    image: elaina/fastlio2-pose-image
+    image: elainasuki/rc2025:fastlio2-pose-image
     container_name: fastlio2_pose_container
     environment:
       - DISPLAY=${DISPLAY}
