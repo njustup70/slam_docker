@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 获取脚本所在目录
-SCRIPT_DIR=$(pwd)
+SCRIPT_DIR=$(dirname "$0")
 TAG1="fastlio2-image"
 TAG2="fastlio2-pose-image"
 # 镜像仓库，可通过环境变量 IMAGE_REPO 设置，默认是 elaina/fastlio2
