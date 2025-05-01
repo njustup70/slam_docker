@@ -1,10 +1,10 @@
 version: '3'
 services:
   fastlio_localization:
-    build:
-      context: ..
-      dockerfile: .devcontainer/Dockerfile
-    image: elaina/fast_localization_image
+    # build:
+    #   context: ..
+    #   dockerfile: .devcontainer/Dockerfile
+    image: elainasuki/rc2025:fast_localization
     container_name: fast_localization_container
     environment:
       - DISPLAY=${DISPLAY}
