@@ -1,10 +1,7 @@
 version: '3'
 services:
   point_lio_service:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: Nagisa/point_lio
+    image: elainasuki/rc2025:point_lio
     container_name: point_lio_container
     environment:
       - DISPLAY=${DISPLAY}
