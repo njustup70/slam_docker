@@ -15,4 +15,5 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 RUN mkdir -p pointlio_ws/src && cd pointlio_ws/src && git clone --recurse-submodules https://github.com/hku-mars/Point-LIO.git
 RUN cd pointlio_ws && . /home/${USERNAME}/packages/ws_livox/devel/setup.sh && catkin_make 
+RUN echo "source /home/${USERNAME}/packages/pointlio_ws/devel/setup.bash" >> /home/$USERNAME/.bashrc
 CMD ["/bin/bash"]

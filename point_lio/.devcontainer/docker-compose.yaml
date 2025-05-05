@@ -14,6 +14,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ./../..:/home/Elaina/slam
       - /dev:/dev
+      - ../map:/home/Elaina/packages/pointlio_ws/src/Point-LIO/PCD
     network_mode: host
     pid: "host" # 添加 pid 命名空间共享
     ipc: "host" # 添加 ipc 命名空间共享    
@@ -24,3 +25,4 @@ services:
     #runtime: nvidia
     working_dir: "/home/Elaina/slam/point_lio" # 指定默认工作目录# 指定默认工作目录
     # entrypoint: [ "/bin/bash", "-i", "-c", "/home/Nagisa/packages/lio_sam/.devcontainer/nagisa_start.sh && source ~/.bashrc && roslaunch my_lio_sam run.launch" ]
+    entrypoint: [ "/bin/bash", "-i", "-c", "/home/Elaina/slam/docker_start.sh && /bin/bash" ]
