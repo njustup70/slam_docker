@@ -25,4 +25,5 @@ services:
     tty: true
     user: "Elaina"
     # runtime: nvidia
-    working_dir: "/home/Elaina/slam/dio_slam" # 指定默认工作目录
+    working_dir: "/home/Elaina/slam/funny_slam" # 指定默认工作目录
+    entrypoint: [ "/bin/bash", "-i", "-c", "/home/Elaina/slam/docker_start.sh && /bin/bash" ]
