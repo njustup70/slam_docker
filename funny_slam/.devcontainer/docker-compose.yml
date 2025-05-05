@@ -17,6 +17,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ./../..:/home/Elaina/slam
       - /dev:/dev
+      - ./../data:/home/Elaina/packages/funny_slam_ws/src/funny_lidar_slam/data
     network_mode: host
     pid: "host" # 添加 pid 命名空间共享
     ipc: "host" # 添加 ipc 命名空间共享    
