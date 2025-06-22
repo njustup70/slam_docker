@@ -11,7 +11,7 @@ lio_sam:
   lidarFrame: "base_link"
   baselinkFrame: "base_link"
   odometryFrame: "odom"
-  mapFrame: "map"
+  mapFrame: "map_trash"
 
   # GPS Settings
   useImuHeadingInitialization: false           # if using GPS data, set to "true"
@@ -106,7 +106,7 @@ navsat:
 # EKF for Navsat
 ekf_gps:
   publish_tf: false
-  map_frame: map
+  map_frame: map_trash
   odom_frame: odom
   base_link_frame: base_link
   world_frame: odom
