@@ -58,4 +58,3 @@ WORKDIR /home/$USERNAME
 
 # 设置容器启动时默认执行的命令，并自动加载工作空间
 CMD ["/bin/bash"]
-
