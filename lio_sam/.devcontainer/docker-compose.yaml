@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: Nagisa/lio_sam
+    image: elainasuki/rc2025:lio_sam
     container_name: lio_sam_container
     environment:
       - DISPLAY=${DISPLAY}
