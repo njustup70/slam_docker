@@ -45,7 +45,7 @@ RUN mkdir -p ~/liosam_ws/src \
     && cd ~/liosam_ws/src \
     && git config --global http.postBuffer 524288000 \
     && git config --global http.timeout 300 \
-    && git clone --depth 1 --branch master https://github.com/TixiaoShan/LIO-SAM.git 
+    && git clone --depth 1 --branch master https://github.com/Elaina-rascal/LIO-SAM.git
  
 RUN cd ~/liosam_ws \
     && /bin/bash -c "source /opt/ros/kinetic/setup.bash && catkin_make "
