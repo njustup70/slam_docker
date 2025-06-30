@@ -66,11 +66,11 @@ lio_sam:
 
   # CPU Params
   numberOfCores: 4                              # number of cores for mapping optimization
-  mappingProcessInterval: 0.15                  # seconds, regulate mapping frequency
+  mappingProcessInterval: 0.3                  # seconds, regulate mapping frequency
 
   # Surrounding map
-  surroundingkeyframeAddingDistThreshold: 0.5   # meters, regulate keyframe adding threshold
-  surroundingkeyframeAddingAngleThreshold: 0.1  # radians, regulate keyframe adding threshold
+  surroundingkeyframeAddingDistThreshold: 1.0   # meters, regulate keyframe adding threshold
+  surroundingkeyframeAddingAngleThreshold: 0.2  # radians, regulate keyframe adding threshold
   surroundingKeyframeDensity: 0.5               # meters, downsample surrounding keyframe poses   
   surroundingKeyframeSearchRadius: 20.0         # meters, within n meters scan-to-map optimization (when loop closure disabled)
 
