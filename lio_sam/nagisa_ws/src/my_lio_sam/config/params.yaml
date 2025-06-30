@@ -65,7 +65,7 @@ lio_sam:
   rotation_tollerance: 10                    # radians
 
   # CPU Params
-  numberOfCores: 4                              # number of cores for mapping optimization
+  numberOfCores: 1                              # number of cores for mapping optimization
   mappingProcessInterval: 0.3                  # seconds, regulate mapping frequency
 
   # Surrounding map

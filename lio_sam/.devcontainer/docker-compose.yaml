@@ -27,6 +27,7 @@ services:
     cap_add:
       - SYS_NICE
     #runtime: nvidia
+    cpuset: "2,3"  # 独占核心2和3
     working_dir: "/home/Nagisa/packages/lio_sam" # 指定默认工作目录
     entrypoint: [ "/bin/bash", "-i", "-c", "/home/Nagisa/packages/lio_sam/.devcontainer/nagisa_start.sh && source ~/.bashrc &&  roslaunch my_lio_sam run.launch rviz:=false" ]
     deploy:
