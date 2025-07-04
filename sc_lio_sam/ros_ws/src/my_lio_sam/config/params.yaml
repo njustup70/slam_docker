@@ -2,7 +2,7 @@
 lio_sam:
 
   # Topics
-  pointCloudTopic: "livox/lidar/pc"               # Point cloud data
+  pointCloudTopic: "livox/lidar"               # Point cloud data
   imuTopic: "/livox/imu/normal"                         # IMU data
   odomTopic: "odometry/imu"                   # IMU pre-preintegration odometry, same frequency as IMU
   gpsTopic: "odometry/gpsz"                   # GPS odometry topic from navsat, see module_navsat.launch file
@@ -21,7 +21,7 @@ lio_sam:
   
   # Export settings
   savePCD: true                              # https://github.com/TixiaoShan/LIO-SAM/issues/3
-  savePCDDirectory: "/packages/nagisa_liorf/nagisa_ws/src/my_liorf/pcd/"        # in your home folder, starts and ends with "/". Warning: the code deletes "LOAM" folder then recreates it. See "mapOptimization" for implementation
+  savePCDDirectory: "/home/Elaina/map/"        # in your home folder, starts and ends with "/". Warning: the code deletes "LOAM" folder then recreates it. See "mapOptimization" for implementation
 
   # Sensor Settings
   sensor: velodyne                         # lidar sensor type, 'velodyne' or 'ouster' or 'livox'
