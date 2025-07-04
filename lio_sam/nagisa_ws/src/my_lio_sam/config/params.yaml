@@ -8,10 +8,10 @@ lio_sam:
   gpsTopic: "odometry/gpsz"                   # GPS odometry topic from navsat, see module_navsat.launch file
 
   # Frames
-  lidarFrame: "lio_base_link"
-  baselinkFrame: "lio_base_link"
-  odometryFrame: "laser_odom"
-  mapFrame: "laser_map"
+  lidarFrame: "body"
+  baselinkFrame: "body"
+  odometryFrame: "camera_init"
+  mapFrame: "map"
 
   # GPS Settings
   useImuHeadingInitialization: false           # if using GPS data, set to "true"
