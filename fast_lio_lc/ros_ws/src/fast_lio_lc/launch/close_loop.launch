@@ -1,12 +1,12 @@
 <launch>
 
-    <param name="scan_line" type="int" value="16" />
+    <param name="scan_line" type="int" value="4" />
 
     <!-- if 1, do mapping 10 Hz, if 2, do mapping 5 Hz. Suggest to use 1, it will adjust frequence automaticlly -->
     <param name="mapping_skip_frame" type="int" value="1" />
 
     <!-- remove too closed points -->
-    <param name="minimum_range" type="double" value="0.1"/>
+    <param name="minimum_range" type="double" value="1"/>
 
     <param name="mapping_line_resolution" type="double" value="0.2"/>
     <param name="mapping_plane_resolution" type="double" value="0.4"/>
@@ -19,13 +19,13 @@
 
     <!-- Scan Context -->
     <param name="sc_dist_thres" type="double" value="0.4"/> <!-- SC-A-LOAM, if want no outliers, use 0.1-0.15 -->
-    <param name="sc_max_radius" type="double" value="20"/> <!-- 20 or 40 for indoor -->
+    <param name="sc_max_radius" type="double" value="40"/> <!-- 20 or 40 for indoor -->
     <!-- <param name="sc_max_radius" type="double" value="80.0"/> for outdoor -->
 
     <!-- loop closure -->
-    <param name="historyKeyframeSearchRadius" value="1.5"/>
+    <param name="historyKeyframeSearchRadius" value="40"/>
     <param name="historyKeyframeSearchTimeDiff" value=" 30.0"/>
-    <param name="historyKeyframeSearchNum" value="20"/>
+    <param name="historyKeyframeSearchNum" value="40"/>
     <param name="speedFactor" value="1"/>           <!-- 倍速因子 -->
     <param name="loopClosureFrequency" value="4.0"/> <!-- 应该相对于输入数据的频率 成比例 -->
     <param name="graphUpdateFrequency" value="2.0"/>
