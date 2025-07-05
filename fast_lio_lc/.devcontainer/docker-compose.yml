@@ -27,4 +27,4 @@ services:
     user: "Elaina"
     # runtime: nvidia
     working_dir: "/home/Elaina/slam/fast_lio_lc" # 指定默认工作目录
-    # entrypoint: [ "/bin/bash", "-i", "-c", "/home/Elaina/slam/docker_start.sh && source ~/.bashrc &&  roslaunch my_fast_lio2 mapping_mid360.launch rviz:=false" ]
+    entrypoint: [ "/bin/bash", "-i", "-c", "/home/Elaina/slam/docker_start.sh && source ~/.bashrc &&  roslaunch fast_lio_lc mid360.launch rviz:=false" ]
