@@ -9,8 +9,8 @@ common:
 
 preprocess:
     lidar_type: 2 
-    scan_line: 6 
-    timestamp_unit: 1   # the unit of time/t field in the PointCloud2 rostopic: 0-second, 1-milisecond, 2-microsecond, 3-nanosecond.
+    scan_line: 4 
+    timestamp_unit: 0   # the unit of time/t field in the PointCloud2 rostopic: 0-second, 1-milisecond, 2-microsecond, 3-nanosecond.
     blind: 4.0 
 
 mapping:
