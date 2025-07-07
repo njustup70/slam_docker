@@ -4,8 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: elainasuki/rc2025:lio_sam
-    container_name: lio_sam_container
+    image: elainasuki/rc2025:sc_lio_sam
+    container_name: sc_lio_sam_container
     environment:
       - DISPLAY=${DISPLAY}
       - NVIDIA_VISIBLE_DEVICES=all
@@ -15,7 +15,7 @@ services:
     volumes:
       # - ${XAUTHORITY}:/root/.Xauthority
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ./../..:/home/Nagisa/packages
+      - ./../..:/home/Elaina/slam
       - /dev:/dev
     network_mode: host
     pid: "host" # 添加 pid 命名空间共享
@@ -23,7 +23,7 @@ services:
     privileged: true
     stdin_open: true
     tty: true
-    user: "Nagisa"
+    user: "Elaina"
     #runtime: nvidia
-    working_dir: "/home/Nagisa/packages/lio_sam" # 指定默认工作目录
-    entrypoint: [ "/bin/bash", "-i", "-c", "/home/Nagisa/packages/lio_sam/.devcontainer/nagisa_start.sh && source ~/.bashrc && roslaunch my_lio_sam run.launch rviz:=false" ]
+    working_dir: "/home/Elaina/slam/sc_lio_sam" # 指定默认工作目录
+    entrypoint: [ "/bin/bash", "-i", "-c", "/home/Elaina/slam/docker_start.sh  && source ~/.bashrc && roslaunch my_lio_sam run.launch rviz:=false" ]

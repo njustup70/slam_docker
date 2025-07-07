@@ -3,15 +3,15 @@ lio_sam:
 
   # Topics
   pointCloudTopic: "livox/lidar/pc"               # Point cloud data
-  imuTopic: "/imu_transformed"                         # IMU data
+  imuTopic: "/livox/imu/normal"                         # IMU data
   odomTopic: "odometry/imu"                   # IMU pre-preintegration odometry, same frequency as IMU
   gpsTopic: "odometry/gpsz"                   # GPS odometry topic from navsat, see module_navsat.launch file
 
   # Frames
-  lidarFrame: "base_link"
-  baselinkFrame: "base_link"
-  odometryFrame: "odom"
-  mapFrame: "map"
+  lidarFrame: "lio_base_link"
+  baselinkFrame: "lio_base_link"
+  odometryFrame: "laser_odom"
+  mapFrame: "laser_map"
 
   # GPS Settings
   useImuHeadingInitialization: false           # if using GPS data, set to "true"
@@ -106,7 +106,7 @@ navsat:
 # EKF for Navsat
 ekf_gps:
   publish_tf: false
-  map_frame: map
+  map_frame: map_trash
   odom_frame: odom
   base_link_frame: base_link
   world_frame: odom

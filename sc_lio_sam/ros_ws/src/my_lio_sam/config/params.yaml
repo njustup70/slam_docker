@@ -1,17 +1,16 @@
-#实际部署的参数文件本土化：
+# 这份配置文件为使用LIVOX自带的IMU时的配置文件
 lio_sam:
 
   # Topics
-  pointCloudTopic: "livox/lidar/pc"               # Point cloud data
-  #imuTopic: "livox/imu"                         # IMU data
-  imuTopic: "imu_transformed"
+  pointCloudTopic: "livox/lidar"               # Point cloud data
+  imuTopic: "/livox/imu/normal"                         # IMU data
   odomTopic: "odometry/imu"                   # IMU pre-preintegration odometry, same frequency as IMU
   gpsTopic: "odometry/gpsz"                   # GPS odometry topic from navsat, see module_navsat.launch file
 
   # Frames
-  lidarFrame: "base_link"
-  baselinkFrame: "base_link"
-  odometryFrame: "odom"
+  lidarFrame: "body"
+  baselinkFrame: "body"
+  odometryFrame: "camera_init"
   mapFrame: "map"
 
   # GPS Settings
@@ -22,40 +21,39 @@ lio_sam:
   
   # Export settings
   savePCD: true                              # https://github.com/TixiaoShan/LIO-SAM/issues/3
-  savePCDDirectory: "/slam_docker/lio_sam/maps/"        # in your home folder, starts and ends with "/". Warning: the code deletes "LOAM" folder then recreates it. See "mapOptimization" for implementation
+  savePCDDirectory: "/home/Elaina/map/"        # in your home folder, starts and ends with "/". Warning: the code deletes "LOAM" folder then recreates it. See "mapOptimization" for implementation
 
   # Sensor Settings
-  sensor: livox                               # lidar sensor type, 'velodyne' or 'ouster' or 'livox'
-  N_SCAN: 4                                   # number of lidar channel (i.e., Velodyne/Ouster: 16, 32, 64, 128, Livox Horizon: 6)
+  sensor: velodyne                         # lidar sensor type, 'velodyne' or 'ouster' or 'livox'
+  N_SCAN: 4                                  # number of lidar channel (i.e., Velodyne/Ouster: 16, 32, 64, 128, Livox Horizon: 6)
   Horizon_SCAN: 6000                          # lidar horizontal resolution (Velodyne:1800, Ouster:512,1024,2048, Livox Horizon: 4000)
   downsampleRate: 1                           # default: 1. Downsample your data if too many points. i.e., 16 = 64 / 4, 16 = 16 / 1
   lidarMinRange: 1.0                          # default: 1.0, minimum lidar range to be used
-  lidarMaxRange: 40.0                         # default: 1000.0, maximum lidar range to be used
-
+  lidarMaxRange: 40.0                       # default: 1000.0, maximum lidar range to be used
+  
   # IMU Settings
   imuType: 0                               #0: 6-axis imu  1:9-axis imu 注意使用六轴IMU时默认使用MID360内置的IMU数据，加速度单位为g，后续处理中会将这一值乘以重力加速度，恢复为m/s^2
-  imuAccNoise: 1.0e-04
-  imuGyrNoise: 1.0e-04 
-  imuAccBiasN: 0.19
-  imuGyrBiasN: 0.04
-  #imuGravity: 1.02   # 优化后的结果
-  imuGravity: 9.82
+  imuAccNoise: 1.3422642252023751e-04
+  imuGyrNoise: 9.6539939013587513e-05
+  imuAccBiasN: 1.1719844227062148e-05
+  imuGyrBiasN:  2.5459274587251040e-05
+  imuGravity: 9.81   # 优化后的结果
   imuRPYWeight: 0.00
 
-  # Extrinsics: T_lb (lidar -> imu)
   extrinsicTrans: [0.0, 0.0, 0.0]
   extrinsicRot: [1, 0, 0,
-                   0, 1, 0,
-                   0, 0, 1]
-  extrinsicRPY: [1, 0, 0,
-                   0, 1, 0,
-                   0, 0, 1]
+                  0, 1, 0,
+                  0, 0, 1]
+  extrinsicRPY: [1,  0, 0,
+                 0, 1, 0,
+                  0, 0, 1]
+
 
   # LOAM feature threshold
-  edgeThreshold: 1.0
-  surfThreshold: 0.1
+  edgeThreshold: 0.5
+  surfThreshold: 0.2
   edgeFeatureMinValidNum: 10
-  surfFeatureMinValidNum: 100
+  surfFeatureMinValidNum: 80
 
   # voxel filter paprams
   odometrySurfLeafSize: 0.2                     # default: 0.4 - outdoor, 0.2 - indoor
@@ -63,31 +61,31 @@ lio_sam:
   mappingSurfLeafSize: 0.2                      # default: 0.4 - outdoor, 0.2 - indoor
 
   # robot motion constraint (in case you are using a 2D robot)
-  z_tollerance: 1000                            # meters
-  rotation_tollerance: 1000                     # radians
+  z_tollerance: 0.5                           # meters
+  rotation_tollerance: 10                    # radians
 
   # CPU Params
-  numberOfCores: 4                              # number of cores for mapping optimization
-  mappingProcessInterval: 0.15                  # seconds, regulate mapping frequency
+  numberOfCores: 8                              # number of cores for mapping optimization
+  mappingProcessInterval: 0.3                  # seconds, regulate mapping frequency
 
   # Surrounding map
-  surroundingkeyframeAddingDistThreshold: 0.5   # meters, regulate keyframe adding threshold
-  surroundingkeyframeAddingAngleThreshold: 0.1  # radians, regulate keyframe adding threshold
+  surroundingkeyframeAddingDistThreshold: 10.0   # meters, regulate keyframe adding threshold
+  surroundingkeyframeAddingAngleThreshold: 0.2  # radians, regulate keyframe adding threshold
   surroundingKeyframeDensity: 0.5               # meters, downsample surrounding keyframe poses   
   surroundingKeyframeSearchRadius: 20.0         # meters, within n meters scan-to-map optimization (when loop closure disabled)
 
   # Loop closure
-  loopClosureEnableFlag: false
-  loopClosureFrequency: 1.0                     # Hz, regulate loop closure constraint add frequency
-  surroundingKeyframeSize: 25                   # submap size (when loop closure enabled)
-  historyKeyframeSearchRadius: 15.0             # meters, key frame that is within n meters from current pose will be considerd for loop closure
-  historyKeyframeSearchTimeDiff: 30.0           # seconds, key frame that is n seconds older will be considered for loop closure
+  loopClosureEnableFlag: true
+  loopClosureFrequency: 10.0                     # Hz, regulate loop closure constraint add frequency
+  surroundingKeyframeSize: 60                   # submap size (when loop closure enabled)
+  historyKeyframeSearchRadius: 40.0             # meters, key frame that is within n meters from current pose will be considerd for loop closure
+  historyKeyframeSearchTimeDiff: 15.0           # seconds, key frame that is n seconds older will be considered for loop closure
   historyKeyframeSearchNum: 25                  # number of hostory key frames will be fused into a submap for loop closure
-  historyKeyframeFitnessScore: 0.3              # icp threshold, the smaller the better alignment
+  historyKeyframeFitnessScore: 0.1              # icp threshold, the smaller the better alignment
 
   # Visualization
   globalMapVisualizationSearchRadius: 1000.0    # meters, global map visualization radius
-  globalMapVisualizationPoseDensity: 1.0        # meters, global map visualization keyframe density
+  globalMapVisualizationPoseDensity: 1       # meters, global map visualization keyframe density
   globalMapVisualizationLeafSize: 0.3           # meters, global map visualization cloud density
 
 
@@ -108,7 +106,7 @@ navsat:
 # EKF for Navsat
 ekf_gps:
   publish_tf: false
-  map_frame: map
+  map_frame: map_trash
   odom_frame: odom
   base_link_frame: base_link
   world_frame: odom
