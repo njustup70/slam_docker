@@ -39,11 +39,11 @@ LocalBA:
   thread_num: 5
 
 Loop:
-  jud_default: 0.45
+  jud_default: 0.25
   icp_eigval: 15
   ratio_drift: 0.01
   curr_halt: 10
-  prev_halt: 10
+  prev_halt: 20
   acsize: 2
   mgsize: 2
   isHighFly: 0
