@@ -1,6 +1,6 @@
 General:
   lid_topic: "/livox/lidar/pc"
-  imu_topic: "/livox/imu/normal"
+  imu_topic: "/livox/imu"
   save_path: "/home/zale/save_datas/urbannav/"
   previous_map: ""
   bagname: "medium1"
