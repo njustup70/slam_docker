@@ -3,7 +3,7 @@ General:
   imu_topic: "/livox/imu"
   save_path: "/home/Elaina/map/"
   previous_map: ""
-  bagname: "test"
+  bagname: "bag"
   lidar_type: 1
   blind: 2.8
   point_filter_num: 3
