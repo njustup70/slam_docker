@@ -11,7 +11,7 @@ General:
   extrinsic_rota: [1, 0, 0, 
                    0, 1, 0, 
                    0, 0, 1]
-  is_save_map: 0
+  is_save_map: 1
 
 Odometry:
   cov_gyr: 0.01 # 0.01
