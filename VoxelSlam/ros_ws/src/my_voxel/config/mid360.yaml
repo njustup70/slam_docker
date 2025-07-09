@@ -1,9 +1,9 @@
 General:
   lid_topic: "/livox/lidar/pc"
   imu_topic: "/livox/imu"
-  save_path: "/home/zale/save_datas/urbannav/"
+  save_path: "/home/Elaina/map/"
   previous_map: ""
-  bagname: "medium1"
+  bagname: "test"
   lidar_type: 1
   blind: 2.8
   point_filter_num: 3
@@ -11,7 +11,7 @@ General:
   extrinsic_rota: [1, 0, 0, 
                    0, 1, 0, 
                    0, 0, 1]
-  is_save_map: 0
+  is_save_map: 1
 
 Odometry:
   cov_gyr: 0.01 # 0.01
