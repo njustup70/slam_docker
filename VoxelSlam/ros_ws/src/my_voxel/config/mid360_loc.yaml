@@ -49,7 +49,7 @@ Loop:
   isHighFly: 0
 
 GBA:
-  voxel_size: 2.5-3.0    # 适度增大体素以适应大空间
-  min_eigen_value: 0.02-0.05  # 保留足够特征但过滤噪声
+  voxel_size: 2.5    # 适度增大体素以适应大空间
+  min_eigen_value: 0.03  # 保留足够特征但过滤噪声
   eigen_value_array: [3.0, 3.0, 3.0, 3.0]  # 平衡特征提取
-  total_max_iter: 8-12   # 增加迭代确保大尺度优化收敛
+  total_max_iter: 10   # 增加迭代确保大尺度优化收敛
