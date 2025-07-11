@@ -1,55 +1,55 @@
 General:
   lid_topic: "/livox/lidar/pc"
-  imu_topic: "/livox/imu"
+  imu_topic: "/livox/imu/normal"
   save_path: "/home/Elaina/map/"
-  previous_map: "bag: 0.5"
+  previous_map: "bag: 0.5"  
   bagname: ""
   lidar_type: 1
   blind: 2.8
   point_filter_num: 3
-  extrinsic_tran: [0.0, 0.0, 0.28] # urbannav 
+  extrinsic_tran: [0.0, 0.0, 0.28] 
   extrinsic_rota: [1, 0, 0, 
                    0, 1, 0, 
                    0, 0, 1]
-  is_save_map: 0
+  is_save_map: 0  
 
 Odometry:
-  cov_gyr: 0.01 # 0.01
-  cov_acc: 1
-  rdw_gyr: 0.0001
-  rdw_acc: 0.0001
-  down_size: 0.25 # 0.1
-  beam_err: 0.01
-  dept_err: 0.01
-  voxel_size: 2 # 1
-  min_eigen_value: 0.01 # 0.0025
-  degrade_bound: 100
+  cov_gyr: 0.005  
+  cov_acc: 0.5    
+  rdw_gyr: 0.00005  
+  rdw_acc: 0.00005  
+  down_size: 0.2   
+  beam_err: 0.005   
+  dept_err: 0.005   
+  voxel_size: 1.5   
+  min_eigen_value: 0.005  
+  degrade_bound: 80       
   point_notime: 0
 
 LocalBA:
-  win_size: 10
-  max_layer: 2 # 1
-  cov_gyr: 0.01 # 0.01
-  cov_acc: 1
-  rdw_gyr: 0.0001
-  rdw_acc: 0.0001
-  min_ba_point: 1
-  plane_eigen_value_thre: [4.0, 4.0, 4.0, 4.0]
-  imu_coef: 0.0001
-  thread_num: 5
+  win_size: 12    
+  max_layer: 3    
+  cov_gyr: 0.005  
+  cov_acc: 0.5
+  rdw_gyr: 0.00005
+  rdw_acc: 0.00005
+  min_ba_point: 2  
+  plane_eigen_value_thre: [3.0, 3.0, 3.0, 3.0] 
+  imu_coef: 0.0002  
+  thread_num: 6     
 
 Loop:
-  jud_default: 0.25
-  icp_eigval: 15
-  ratio_drift: 0.01
-  curr_halt: 10
-  prev_halt: 20
-  acsize: 2
-  mgsize: 2
+  jud_default: 0.2  
+  icp_eigval: 12   
+  ratio_drift: 0.008  
+  curr_halt: 8      
+  prev_halt: 15     
+  acsize: 1.5       
+  mgsize: 1.5
   isHighFly: 0
 
 GBA:
-  voxel_size: 2.5    # 适度增大体素以适应大空间
-  min_eigen_value: 0.03  # 保留足够特征但过滤噪声
-  eigen_value_array: [3.0, 3.0, 3.0, 3.0]  # 平衡特征提取
-  total_max_iter: 10   # 增加迭代确保大尺度优化收敛
+  voxel_size: 2.0    
+  min_eigen_value: 0.02  
+  eigen_value_array: [2.5, 2.5, 2.5, 2.5]  
+  total_max_iter: 15   
