@@ -1,0 +1,38 @@
+version: '3'
+services:
+  lio_sam_container:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: elainasuki/rc2025:lio_sam
+    container_name: lio_sam_container
+    environment:
+      - DISPLAY=${DISPLAY}
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - OMP_WAIT_POLICY=passive
+      - TERM=xterm-256color
+    volumes:
+      # - ${XAUTHORITY}:/root/.Xauthority
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./../..:/home/Nagisa/packages
+      - /dev:/dev
+    network_mode: host
+    pid: "host" # 添加 pid 命名空间共享
+    ipc: "host" # 添加 ipc 命名空间共享    
+    privileged: true
+    stdin_open: true
+    tty: true
+    user: "Nagisa"
+    cap_add:
+      - SYS_NICE
+    #runtime: nvidia
+    cpuset: "2,3"  # 独占核心2和3
+    working_dir: "/home/Nagisa/packages/lio_sam" # 指定默认工作目录
+    entrypoint: [ "/bin/bash", "-i", "-c", "/home/Nagisa/packages/lio_sam/.devcontainer/nagisa_start.sh && source ~/.bashrc &&  roslaunch my_lio_sam run.launch rviz:=false" ]
+    deploy:
+      resources:
+        reservations:
+          cpus: '2.0'          # 至少保留 1.5 个核
+    cpu_shares: 2048           # 设置CPU份额为1024（默认值为1024）
+        

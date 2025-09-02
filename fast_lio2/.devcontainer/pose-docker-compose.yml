@@ -1,0 +1,32 @@
+version: '3'
+services:
+  fast_lio2_pose:
+    # build:
+    #   context: ..
+    #   dockerfile: .devcontainer/pose.Dockerfile
+    image: elainasuki/rc2025:fastlio2-pose-image
+    container_name: fastlio2_pose_container
+    environment:
+      - DISPLAY=${DISPLAY}
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - OMP_WAIT_POLICY=passive
+      - TERM=xterm-256color
+    volumes:
+      # - ${XAUTHORITY}:/root/.Xauthority
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./../..:/home/Elaina/slam
+      - /dev:/dev
+      #地图存放
+      - ../map:/home/Elaina/packages/catkin_ws/src/FAST_LIO/PCD
+      - ../map/pose:/home/Elaina/packages/catkin_ws/src/FAST_LIO/map
+    network_mode: host
+    pid: "host" # 添加 pid 命名空间共享
+    ipc: "host" # 添加 ipc 命名空间共享    
+    privileged: true
+    stdin_open: true
+    tty: true
+    user: "Elaina"
+    # runtime: nvidia
+    working_dir: "/home/Elaina/slam/fast_lio2" # 指定默认工作目录
+    entrypoint: [ "/bin/bash", "-c", "/home/Elaina/slam/docker_start.sh && /home/Elaina/slam/fast_lio2/clean_map.bash && exec /bin/bash" ]
