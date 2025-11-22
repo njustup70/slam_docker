@@ -25,4 +25,4 @@ services:
     #runtime: nvidia
     working_dir: "/home/Elaina/slam/point_lio" # 指定默认工作目录# 指定默认工作目录
     # entrypoint: [ "/bin/bash", "-i", "-c", "/home/Nagisa/packages/lio_sam/.devcontainer/nagisa_start.sh && source ~/.bashrc && roslaunch my_lio_sam run.launch" ]
-    entrypoint: [ "/bin/bash", "-i", "-c", "/home/Elaina/slam/docker_start.sh  && source ~/.bashrc && roslaunch nagisa_pointlio mapping_airy.launch rviz:=false" ]
+    entrypoint: [ "/bin/bash", "-i", "-c", "/home/Elaina/slam/docker_start.sh  && source ~/.bashrc && roslaunch nagisa_pointlio mapping_mid360.launch rviz:=false"]
