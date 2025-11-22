@@ -1,6 +1,6 @@
 version: '3'
 services:
-  fastlio2_service:
+  voxel_service:
     # build:
     #   context: ..
     #   dockerfile: .devcontainer/Dockerfile
@@ -15,7 +15,7 @@ services:
     volumes:
       # - ${XAUTHORITY}:/root/.Xauthority
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ./../..:/home/Elaina/slam
+      - voxel_slam:/home/Elaina/slam
       - /dev:/dev
       - ../map:/home/Elaina/map
     network_mode: host
@@ -28,3 +28,11 @@ services:
     # runtime: nvidia
     working_dir: "/home/Elaina/slam/VoxelSlam" # 指定默认工作目录
     entrypoint: [ "/bin/bash", "-i", "-c", "/home/Elaina/slam/docker_start.sh && source ~/.bashrc && roslaunch my_voxel mid360.launch rviz:=false" ]
+volumes:
+  voxel_slam:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./../..
+      o: bind
+    name: voxel_slam_volume
