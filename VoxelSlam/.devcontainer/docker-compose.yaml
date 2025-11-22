@@ -16,8 +16,7 @@ services:
       # - ${XAUTHORITY}:/root/.Xauthority
       - /tmp/.X11-unix:/tmp/.X11-unix
       - voxel_slam:/home/Elaina/slam
-      - /dev:/dev
-      - ../map:/home/Elaina/map
+      - voxel_map:/home/Elaina/map
     network_mode: host
     pid: "host" # 添加 pid 命名空间共享
     ipc: "host" # 添加 ipc 命名空间共享    
@@ -36,3 +35,10 @@ volumes:
       device: ./../..
       o: bind
     name: voxel_slam_volume
+  voxel_map:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./../map
+      o: bind
+    name: voxel_map_volume
