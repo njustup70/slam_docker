@@ -1,0 +1,24 @@
+<launch>
+    <!-- 启动点云格式转换节点 -->
+    <!-- <node pkg="livox_lidar_rosbag_converter" type="pointcloud2_to_custommsg" name="pointcloud2_to_custommsg" output="screen"> -->
+        <!-- <remap from="/livox/lidar" to="/rslidar_points"/> -->
+    <!-- </node> -->
+
+    <!-- 启动Voxel-SLAM节点并重映射话题 -->
+    <!-- <include file="$(find voxel_slam)/launch/vxlm_mid360.launch"> -->
+        <!-- 强制重映射话题 -->
+        <!-- <remap from="/livox/imu" to="/imu/data_transformed"/> -->
+        <!-- <remap from="/livox/lidar" to="/livox/lidar_custommsg"/> -->
+    <!-- </include> -->
+
+    <arg name="rviz" default="true" />
+
+	<rosparam command="load" file="$(find my_voxel)/config/airy.yaml"/>
+	<param name="finish" value="false"/>
+	<node pkg="voxel_slam" type="voxelslam" name="voxelslam" output="screen" > </node>
+  
+	<group if="$(arg rviz)">
+		<node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find voxel_slam)/rviz_cfg/back.rviz" />
+	</group>
+
+</launch>
