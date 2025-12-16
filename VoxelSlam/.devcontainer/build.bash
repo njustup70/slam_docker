@@ -25,9 +25,9 @@ if [[ "$1" == "--github-action" ]]; then
     --platform $PLATFORMS \
     -t "$IMAGE" \
     -f "$SCRIPT_DIR/Dockerfile" \
-    "$SCRIPT_DIR" \
+    "$SCRIPT_DIR/.." \
     --push
 else
     echo "本地构建 $IMAGE"
-    docker build -t "$IMAGE" "$SCRIPT_DIR"
+    docker build -t "$IMAGE" -f "$SCRIPT_DIR/Dockerfile" "$SCRIPT_DIR/.."
 fi
