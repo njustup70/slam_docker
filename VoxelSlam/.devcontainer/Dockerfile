@@ -21,6 +21,5 @@ COPY ./ros_ws/src/my_voxel/src/voxelslam.hpp ./catkin_ws/src/Voxel-SLAM/VoxelSLA
 RUN cd catkin_ws && . /home/${USERNAME}/packages/ws_livox/devel/setup.sh && catkin_make \
     && echo 'source ~/packages/catkin_ws/devel/setup.bash' >> /home/${USERNAME}/.bashrc
 
-
 CMD ["/bin/bash"]
 
